@@ -49,3 +49,43 @@ export function renderListWithTemplate(
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+export function renderWithTemplate(
+  template,
+  parentElement,
+  data,
+  callback
+) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    //do something;
+  }
+  
+}
+
+export async function loadTemplate(path){
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+
+export async function loadHeaderFooter(){
+
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const headerElement = document.querySelector("#main-header");
+
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement)
+}
+
+export function updateCartCount() {
+  const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+  const countElement = document.querySelector(".cart-count");
+
+  if (countElement) {
+    countElement.textContent = cartItems.length;
+  }
+}

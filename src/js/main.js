@@ -2,14 +2,19 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+import { updateCartCount } from "./utils.mjs";
 
 const dataSource = new ProductData("tents");
 const productListing = document.querySelector(".product-list");
 
-const myList = new ProductList("tents", dataSource, productListing);
+//const myList = new ProductList("tents", dataSource, productListing);
 
-myList.init();
-
+if (productListing) {
+  const myList = new ProductList("tents", dataSource, productListing);
+  myList.init();
+}
+/*
 function updateCartCount() {
   const cartItems = getLocalStorage("so-cart") || [];
   const badge = document.querySelector(".cart-count");
@@ -18,8 +23,14 @@ function updateCartCount() {
     badge.textContent = cartItems.length;
   }
 }
+*/
 
-updateCartCount();
+async function init() {
+  await loadHeaderFooter();
+  updateCartCount();
+}
+
+init();
 
 /*
 async function renderCartContents() {

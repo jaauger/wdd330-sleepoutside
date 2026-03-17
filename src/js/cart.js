@@ -4,11 +4,11 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (!cartItems || cartItems.length === 0) {
     console.log("Your Cart is Empty");
-    document.querySelector(".product-list").innerHTML = "Your Cart is Empty";
+    document.querySelector(".product-list-cart").innerHTML = "Your Cart is Empty";
   } else {
     console.log("You have " + cartItems.length + " In Your Cart")
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    document.querySelector(".product-list-cart").innerHTML = htmlItems.join("");
     addRemoveListeners();
   }
 }
@@ -48,4 +48,6 @@ function handleRemoveItem(event) {
   renderCartContents();
 }
 
-renderCartContents();
+document.addEventListener("DOMContentLoaded", () => {
+  renderCartContents();
+});
