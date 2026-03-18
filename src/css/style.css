@@ -310,3 +310,39 @@ footer {
   min-width: 16px;
   text-align: center;
 }
+
+
+/* CATEGORY SECTION */
+.categories {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+.category-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.categories figure {
+  margin: 0;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.categories figure:hover {
+  transform: scale(1.1);
+}
+
+.categories img {
+  width: 90px;
+  height: auto;
+}
+
+.categories figcaption {
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
