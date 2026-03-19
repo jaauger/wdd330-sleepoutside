@@ -1,0 +1,1 @@
+import{l as o,a as r,b as a,P as c}from"./ProductList--CHG_27m.js";o();const t=r("category"),s=new c,n=document.querySelector("#category-title"),l=t.replace("-"," ").replace(/\b\w/g,e=>e.toUpperCase());n.textContent=`Top Products: ${l}`;const d=document.querySelector(".product-list"),i=new a(t,s,d);i.init();
