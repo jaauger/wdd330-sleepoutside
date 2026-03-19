@@ -17,7 +17,7 @@ export default class ProductDetails{
     document.getElementById('addToCart')
       .addEventListener('click', this.addProductToCart.bind(this));
   }
-
+  /*
   addProductToCart(){
     let cart = getLocalStorage("so-cart");
     
@@ -33,7 +33,26 @@ export default class ProductDetails{
     }
     updateCartCount();
   }
-   
+  */
+ 
+  addProductToCart() {
+    let cart = getLocalStorage("so-cart") || [];
+    
+    const existingItem = cart.find(item => item.Id === this.product.Id);
+
+    if (existingItem) {
+      
+      existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+      
+      const productWithQty = { ...this.product, quantity: 1 };
+      cart.push(productWithQty);
+    }
+
+    setLocalStorage("so-cart", cart);
+    updateCartCount();
+  }
+  
   renderProductDetails(){
     document.querySelector('h2').textContent = this.product.Brand.Name;
     document.querySelector('h3').textContent = this.product.NameWithoutBrand;

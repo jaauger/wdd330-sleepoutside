@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, updateCartCount } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -6,7 +6,7 @@ function renderCartContents() {
     console.log("Your Cart is Empty");
     document.querySelector(".product-list-cart").innerHTML = "Your Cart is Empty";
   } else {
-    console.log("You have " + cartItems.length + " In Your Cart")
+    console.log("You have " + cartItems.length + " Items in Your Cart")
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list-cart").innerHTML = htmlItems.join("");
     addRemoveListeners();
@@ -26,7 +26,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${item.quantity}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -46,6 +46,7 @@ function handleRemoveItem(event) {
   const updatedItems = cartItems.filter((item) => item.Id !== id);
   setLocalStorage("so-cart", updatedItems);
   renderCartContents();
+  updateCartCount();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
