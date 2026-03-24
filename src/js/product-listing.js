@@ -1,12 +1,12 @@
-import ProductData from './ProductData.mjs';
+import ExternalServices from './ExternalServices.mjs';
 import ProductList from './ProductList.mjs';
 import { loadHeaderFooter, getParam } from './utils.mjs';
 
 loadHeaderFooter();
 
 const category = getParam('category');
-// first create an instance of the ProductData class.
-const dataSource = new ProductData();
+// first create an instance of the ExternalServices class.
+const dataSource = new ExternalServices();
 const title = document.querySelector("#category-title");
 const formattedCategory = category
   .replace("-", " ")
