@@ -76,6 +76,10 @@ export default class CheckoutProcess {
     const shipping = document.querySelector(`${this.outputSelector} #shipping`);
     const orderTotal = document.querySelector(`${this.outputSelector} #orderTotal`);
 
+    console.log(tax);
+    console.log(shipping);
+    console.log(orderTotal);
+
     tax.innerText = `$${this.tax.toFixed(2)}`;
     shipping.innerText = `$${this.shipping.toFixed(2)}`;
     orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
