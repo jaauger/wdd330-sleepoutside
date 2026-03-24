@@ -1,4 +1,4 @@
-import{g as c,s as l,u as d}from"./ProductList-HNyLXOAk.js";function n(){const t=c("so-cart");if(!t||t.length===0)console.log("Your Cart is Empty"),document.querySelector(".product-list-cart").innerHTML="Your Cart is Empty",o([]);else{console.log("You have "+t.length+" Items in Your Cart");const e=t.map(a=>u(a));document.querySelector(".product-list-cart").innerHTML=e.join(""),m(),o(t)}}function u(t){return`<li class="cart-card divider">
+import{g as c,s as l,u as d}from"./ProductList-B6UGUCGR.js";function n(){const t=c("so-cart");if(!t||t.length===0)console.log("Your Cart is Empty"),document.querySelector(".product-list-cart").innerHTML="Your Cart is Empty",o([]);else{console.log("You have "+t.length+" Items in Your Cart");const e=t.map(a=>u(a));document.querySelector(".product-list-cart").innerHTML=e.join(""),m(),o(t)}}function u(t){return`<li class="cart-card divider">
   <button class="cart-card__remove" type="button" data-id="${t.Id}" aria-label="Remove ${t.Name} from cart">X</button>
   <a href="#" class="cart-card__image">
     <img
