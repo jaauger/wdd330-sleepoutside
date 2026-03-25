@@ -44,12 +44,15 @@ export default class CheckoutProcess {
 
   calculateItemSummary() {
     // calculate and display the total amount of the items in the cart, and the number of items.
-    const summaryElement = document.querySelector(
+    /* const summaryElement = document.querySelector(
       this.outputSelector + " #cartTotal"
     );
     const itemNumElement = document.querySelector(
       this.outputSelector + " #num-items"
-    );
+    ); */
+    const summaryElement = document.querySelector("#cartTotal");
+    const itemNumElement = document.querySelector("#num-items");
+
     itemNumElement.innerText = this.list.length;
     // calculate the total of all the items in the cart
     //const amounts = this.list.map((item) => item.FinalPrice);
@@ -75,10 +78,15 @@ export default class CheckoutProcess {
 
   displayOrderTotals() {
     // once the totals are all calculated display them in the order summary page
+    /*
     const tax = document.querySelector(`${this.outputSelector} #tax`);
     const shipping = document.querySelector(`${this.outputSelector} #shipping`);
     const orderTotal = document.querySelector(`${this.outputSelector} #orderTotal`);
-
+    */
+    const tax = document.querySelector("#tax");
+    const shipping = document.querySelector("#shipping");
+    const orderTotal = document.querySelector("#orderTotal");
+    
     console.log(tax);
     console.log(shipping);
     console.log(orderTotal);
