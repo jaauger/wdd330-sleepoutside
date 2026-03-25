@@ -1,1 +1,0 @@
-import{l as o,a as r,P as a,E as c}from"./ProductList-DGbCJ-NQ.js";o();const t=r("category"),s=new c,n=document.querySelector("#category-title"),l=t.replace("-"," ").replace(/\b\w/g,e=>e.toUpperCase());n.textContent=`Top Products: ${l}`;const i=document.querySelector(".product-list"),d=new a(t,s,i);d.init();

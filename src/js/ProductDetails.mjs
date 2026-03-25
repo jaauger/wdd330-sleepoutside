@@ -61,7 +61,35 @@ export default class ProductDetails{
     productImage.src = this.product.Images.PrimaryLarge;
     productImage.alt = this.product.NameWithoutBrand;
 
-    document.getElementById('productPrice').textContent = this.product.FinalPrice;
+    //document.getElementById('productPrice').textContent = this.product.FinalPrice;
+    const priceElement = document.getElementById('productPrice');
+
+    const original = this.product.SuggestedRetailPrice;
+    const final = this.product.FinalPrice;
+      
+    if (original && original > final) {
+      const discount = original - final;
+      const percent = Math.round((discount / original) * 100);
+    
+      priceElement.innerHTML = `
+        <div class="container_price">
+          <span>$${final.toFixed(2)}</span>
+          <span class="discount__price">${percent}% OFF</span>
+        </div>
+        <div>
+          <span style="text-decoration: line-through; color: #888;">
+            $${original.toFixed(2)}
+          </span>
+          <span style="color: var(--tertiary-color); margin-left: 10px;">
+            Save $${discount.toFixed(2)}
+          </span>
+        </div>
+      `;
+    } else {
+      priceElement.textContent = `$${final.toFixed(2)}`;
+    }
+
+
     document.getElementById('productColor').textContent = this.product.Colors[0].ColorName;
     document.getElementById('productDesc').innerHTML = this.product.DescriptionHtmlSimple;
 
