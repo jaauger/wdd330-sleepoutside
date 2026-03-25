@@ -4,7 +4,7 @@ import { loadHeaderFooter } from "./utils.mjs";
 async function init() {
   await loadHeaderFooter();
 
-  const checkout = new CheckoutProcess("so-cart", ".order-summary");
+  const checkout = new CheckoutProcess("so-cart", ".order__summary");
 
   checkout.init();
   checkout.calculateOrderTotal();
