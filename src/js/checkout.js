@@ -11,8 +11,16 @@ async function init() {
 
   document.forms["checkout"].addEventListener("submit", function (e) {
     e.preventDefault();
+
+    const form = document.forms["checkout"];
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     checkout.checkout();
-  });
+    });
 }
 
 init();

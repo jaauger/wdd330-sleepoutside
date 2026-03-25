@@ -86,7 +86,7 @@ export default class CheckoutProcess {
     const tax = document.querySelector("#tax");
     const shipping = document.querySelector("#shipping");
     const orderTotal = document.querySelector("#orderTotal");
-    
+
     console.log(tax);
     console.log(shipping);
     console.log(orderTotal);
@@ -110,8 +110,15 @@ export default class CheckoutProcess {
     try {
       const response = await services.checkout(order);
       console.log(response);
+        
+      // SUCCESS FLOW
+      localStorage.removeItem("so-cart");
+      window.location.href = "/checkout/success.html";
+        
     } catch (err) {
-      console.log(err);
+      console.error(err);
+    
+      alert(err.message?.message || "Checkout failed");
     }
   }
 }
